@@ -6,6 +6,7 @@ api: true
 providers:
   docker:
     exposedbydefault: false
+    defaultRule: Host(`{{normalize .Name}}.localhost`)
   file:
     directory: /etc/traefik/dynamic_config/
     watch: true
