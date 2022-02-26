@@ -5,10 +5,15 @@ services:
     image: traefik:v2.6
     ports:
       - 80:80
-      - 8080:8080
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik/
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.traefik-dashboard.rule=Host(`traefik.localhost`)
+      - traefik.http.routers.traefik-dashboard.service=dashboard@internal
+      - traefik.http.routers.traefik-api.rule=Host(`traefik.localhost`) && PathPrefix(`/api`)
+      - traefik.http.routers.traefik-api.service=api@internal
 
   whoami:
     image: traefik/whoami
