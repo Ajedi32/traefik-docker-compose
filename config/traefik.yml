@@ -6,6 +6,9 @@ api: true
 providers:
   docker:
     exposedbydefault: false
+  file:
+    directory: /etc/traefik/dynamic_config/
+    watch: true
 
 entrypoints:
   web:
