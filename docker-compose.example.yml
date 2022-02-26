@@ -9,9 +9,11 @@ services:
       - default
       - traefik
     labels:
+      # Enable Traefik on this container
       - traefik.enable=true
+
+      # Specify hostname and other routing rules
       - traefik.http.routers.whoami.rule=Host(`whoami.localhost`)
-      - traefik.http.routers.whoami.entrypoints=web
 
 networks:
   traefik:
