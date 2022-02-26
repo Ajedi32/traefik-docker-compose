@@ -20,7 +20,9 @@ See [production usage](#production-usage) below for additional setup needed for 
 
 To configure another project to be served by Traefik, you just need to attach it to the external `traefik` network and add a few labels to tell Traefik how to route trafic to the containers.
 
-See [`docker-compose.example.yml`](docker-compose.example.yml) for an example.
+See [`docker-compose.example.yml`](docker-compose.example.yml) for a working example.
+
+For detailed documentation, see the [Traefik documentation](https://doc.traefik.io/traefik/providers/docker/).
 
 ## Production usage
 
