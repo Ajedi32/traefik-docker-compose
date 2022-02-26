@@ -15,6 +15,7 @@ services:
       # Specify hostname and other routing rules
       - traefik.http.routers.whoami.rule=Host(`whoami.localhost`)
 
+
 networks:
   traefik:
     name: traefik
