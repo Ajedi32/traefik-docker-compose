@@ -8,9 +8,15 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
       - ./config:/etc/traefik/
+    networks:
+      - traefik
     labels:
       - traefik.enable=true
       - traefik.http.routers.traefik-dashboard.rule=Host(`traefik.localhost`)
       - traefik.http.routers.traefik-dashboard.service=dashboard@internal
       - traefik.http.routers.traefik-api.rule=Host(`traefik.localhost`) && PathPrefix(`/api`)
       - traefik.http.routers.traefik-api.service=api@internal
+
+networks:
+  traefik:
+    name: traefik
