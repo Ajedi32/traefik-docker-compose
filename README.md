@@ -62,6 +62,10 @@ Note: Bcrypt cost function can be tuned with `time htpasswd -nbBC $cost admin te
 
 When updating this file, you will need to reload Traefik for the changes to take effect.
 
+### Setting the dashboard domain name
+
+You can configure the domain name used to access the Traefik dashboard in production by modifying the routers in `docker-compose.prod.yml`.
+
 ### Running Traefik
 
 ```

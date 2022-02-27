@@ -11,3 +11,7 @@ services:
       # enforce-hsts-permanent@file - Replace `enforce-hsts@file` with this to preload HSTS. See https://hstspreload.org/
       - traefik.http.routers.traefik-dashboard.middlewares=redirect-https@file,dashboard-auth@file,enforce-hsts@file
       - traefik.http.routers.traefik-api.middlewares=redirect-https@file,dashboard-auth@file,enforce-hsts@file
+
+      # Specify domain used to access Traefik dashboard in production
+      # - traefik.http.routers.traefik-dashboard.rule=Host(`traefik.example.com`)
+      # - traefik.http.routers.traefik-api.rule=Host(`traefik.example.com`) && PathPrefix(`/api`)
