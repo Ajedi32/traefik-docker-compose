@@ -1,0 +1,16 @@
+http:
+  middlewares:
+    redirect-https:
+      redirectscheme:
+        scheme: https
+        permanent: true
+    enforce-hsts:
+      headers:
+        stsSeconds: 31536000 # 1 year
+        stsIncludeSubdomains: false
+        stsPreload: false
+    enforce-hsts-permanent:
+      headers:
+        stsSeconds: 63072000 # 2 years
+        stsIncludeSubdomains: true
+        stsPreload: true # See https://hstspreload.org/

@@ -15,6 +15,11 @@ services:
       # Specify hostname and other routing rules
       - traefik.http.routers.whoami.rule=Host(`whoami.localhost`)
 
+      # Middleware:
+      # redirect-https@file - Redirect to HTTPS
+      # enforce-hsts@file - Enable HSTS to make browsers force HTTPS for one year
+      # enforce-hsts-permanent@file - Replace `enforce-hsts@file` with this to preload HSTS. See https://hstspreload.org/
+      - traefik.http.routers.whoami.middlewares=redirect-https@file,enforce-hsts@file
 
 networks:
   traefik:
