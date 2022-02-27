@@ -18,3 +18,17 @@ entrypoints:
     address: ":443"
     http:
       tls: true
+
+certificatesResolvers:
+  lets-encrypt:
+    acme:
+      # email: "your_email_address_here@yourdomain.com"
+
+      storage: /data/acme.json
+
+      # Remove below line after you have everything working
+      caServer: https://acme-staging-v02.api.letsencrypt.org/directory # Let's Encrypt Staging
+
+      # TLS-ALPN-01 challenge. Should "just work" if Traefik is publicly exposed.
+      # Otherwise see https://doc.traefik.io/traefik/https/acme/#dnschallenge
+      tlsChallenge: {}

@@ -21,6 +21,14 @@ services:
       # enforce-hsts-permanent@file - Replace `enforce-hsts@file` with this to preload HSTS. See https://hstspreload.org/
       - traefik.http.routers.whoami.middlewares=redirect-https@file,enforce-hsts@file
 
+      # Use Let's Encrypt to generate certificates
+      # Configure using config/traefik.yml
+      # - traefik.http.routers.whoami.tls.certResolver=lets-encrypt
+
+      # Optional: Manually define domains to include in certificate (defaults to using routing rules)
+      # - traefik.http.routers.whoami.tls.domains[0].main=whoami.example.com
+      # - traefik.http.routers.whoami.tls.domains[0].sans[0]=*.example.com
+
 networks:
   traefik:
     name: traefik

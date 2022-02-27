@@ -1,2 +1,5 @@
 # Dashboard users DB
 /config/dashboard_users.htpasswd
+
+# Generated certificate data, etc.
+/data
