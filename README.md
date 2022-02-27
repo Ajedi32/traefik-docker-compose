@@ -1,4 +1,4 @@
-# Traefik config
+# Traefik config for docker-compose
 
 This project hosts a simple config for Traefik intended to allow multiple services to be run off of a single host using docker-compose.
 
@@ -18,9 +18,25 @@ See [production usage](#production-usage) below for additional setup needed for 
 
 ## Configuring a project to use Traefik
 
-To configure another project to be served by Traefik, you just need to attach it to the external `traefik` network and add a few labels to tell Traefik how to route trafic to the containers.
+To configure another project to be served by Traefik, you just need to attach it to the external `traefik` network and add a few labels to tell Traefik how to route trafic to the containers:
 
-See [`docker-compose.example.yml`](docker-compose.example.yml) for a working example.
+```
+services:
+  my-service:
+    networks:
+      - default
+      - traefik
+    labels:
+      - traefik.enable=true
+      - traefik.http.routers.my-service.rule=Host(`my-service.example.com`)
+
+networks:
+  traefik:
+    name: traefik
+    external: true
+```
+
+See [`docker-compose.example.yml`](docker-compose.example.yml) for a complete, working example with further documentation.
 
 For detailed documentation, see the [Traefik documentation](https://doc.traefik.io/traefik/providers/docker/).
 
@@ -28,7 +44,7 @@ For detailed documentation, see the [Traefik documentation](https://doc.traefik.
 
 ### Setting the dashboard password
 
-In production, you must first setup an account which will be used to access the dashboard:
+In production, you must first set up an account which will be used to access the dashboard:
 
 ```
 # Create file
