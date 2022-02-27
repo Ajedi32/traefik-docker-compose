@@ -5,6 +5,7 @@ api: true
 
 providers:
   docker:
+    network: traefik
     exposedbydefault: false
     defaultRule: Host(`{{normalize .Name}}.localhost`)
   file:
