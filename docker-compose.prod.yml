@@ -15,3 +15,11 @@ services:
       # Specify domain used to access Traefik dashboard in production
       # - traefik.http.routers.traefik-dashboard.rule=Host(`traefik.example.com`)
       # - traefik.http.routers.traefik-api.rule=Host(`traefik.example.com`) && PathPrefix(`/api`)
+
+      # Use Let's Encrypt to generate certificates
+      # Configure using config/traefik.yml
+      # - traefik.http.routers.whoami.tls.certResolver=lets-encrypt
+
+      # Optional: Manually define domains to include in certificate (defaults to using routing rules)
+      # - traefik.http.routers.whoami.tls.domains[0].main=traefik.example.com
+      # - traefik.http.routers.whoami.tls.domains[0].sans[0]=*.example.com
